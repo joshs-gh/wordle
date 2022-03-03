@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Dict from "./dict";
 
-export default function WLine({ keyp, active }) {
+export default function WLine({ keyp, active, word }) {
   const [guess, setGuess] = useState([]);
 
   useEffect(() => {
@@ -18,9 +18,16 @@ export default function WLine({ keyp, active }) {
   }, [keyp, active]);
 
   function checkGuess() {
-    if (!Dict.includes(guess.join("").toLowerCase())) {
+    const g = guess.join("").toLowerCase();
+    const ga = g.split("");
+    const wa = word.split("");
+    console.log(g, word);
+    if (!Dict.includes(g)) {
       alert("Word not in dictionary");
       return;
+    }
+    for (let i = 0; i < 5; i++) {
+      console.log(ga[i] == wa[i]);
     }
   }
 
