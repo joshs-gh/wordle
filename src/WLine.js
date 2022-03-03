@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Dict from "./dict";
 
-export default function WLine({ keyp, active, word }) {
+export default function WLine({ keyp, active, word, nextLine }) {
   const [guess, setGuess] = useState([]);
+  const [c1, sc1] = useState("");
+  const [c2, sc2] = useState("");
+  const [c3, sc3] = useState("");
+  const [c4, sc4] = useState("");
+  const [c5, sc5] = useState("");
 
   useEffect(() => {
     if (active && keyp) {
@@ -26,18 +31,39 @@ export default function WLine({ keyp, active, word }) {
       alert("Word not in dictionary");
       return;
     }
+    let cn = "";
+    let rc = 0;
     for (let i = 0; i < 5; i++) {
-      console.log(ga[i] == wa[i]);
+      if (ga[i] == wa[i]) {
+        cn = "right";
+        rc++;
+      } else if (wa.includes(ga[i])) {
+        cn = "hint";
+      } else cn = "wrong";
+
+      switch (i) {
+        case 0:
+          sc1(cn);
+        case 1:
+          sc2(cn);
+        case 2:
+          sc3(cn);
+        case 3:
+          sc4(cn);
+        case 4:
+          sc5(cn);
+      }
     }
+    nextLine();
   }
 
   return (
     <div className="wline">
-      <div className="wcell">{guess[0] || ""}</div>
-      <div className="wcell"> {guess[1] || ""}</div>
-      <div className="wcell"> {guess[2] || ""}</div>
-      <div className="wcell"> {guess[3] || ""}</div>
-      <div className="wcell"> {guess[4] || ""}</div>
+      <div className={`wcell ${c1}`}>{guess[0] || ""}</div>
+      <div className={`wcell ${c2}`}> {guess[1] || ""}</div>
+      <div className={`wcell ${c3}`}> {guess[2] || ""}</div>
+      <div className={`wcell ${c4}`}> {guess[3] || ""}</div>
+      <div className={`wcell ${c5}`}> {guess[4] || ""}</div>
     </div>
   );
 }

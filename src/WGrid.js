@@ -11,33 +11,48 @@ export default function WGrid(props) {
     setLine(1);
   }, [props.word]);
 
+  function nextLine() {
+    console.log("NL");
+    setLine(line + 1);
+  }
+
   return (
     <div className="wgrid">
-      <WLine word={word} keyp={props.keyp} active={line === 1}></WLine>
+      <WLine
+        word={word}
+        keyp={props.keyp}
+        active={line === 1}
+        nextLine={nextLine}
+      ></WLine>
       <WLine
         word={word}
         keyp={line === 2 && props.keyp}
         active={line === 2}
+        nextLine={nextLine}
       ></WLine>
       <WLine
         word={word}
         keyp={line === 3 && props.keyp}
         active={line === 3}
+        nextLine={nextLine}
       ></WLine>
       <WLine
         word={word}
         keyp={line === 4 && props.keyp}
-        active={line === 3}
+        active={line === 4}
+        nextLine={nextLine}
       ></WLine>
       <WLine
         word={word}
         keyp={line === 5 && props.keyp}
-        active={line === 3}
+        active={line === 5}
+        nextLine={nextLine}
       ></WLine>
       <WLine
         word={word}
         keyp={line === 6 && props.keyp}
-        active={line === 3}
+        active={line === 6}
+        nextLine={nextLine}
       ></WLine>
     </div>
   );

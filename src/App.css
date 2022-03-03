@@ -35,3 +35,13 @@ header {
   border-width: 1px;
   font-size: x-large;
 }
+
+.right {
+  background-color: green;
+  color: #000000;
+}
+
+.hint {
+  background-color: yellow;
+  color: #000000;
+}
