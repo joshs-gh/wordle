@@ -12,7 +12,6 @@ export default function WGrid(props) {
   }, [props.word]);
 
   function nextLine() {
-    console.log("NL");
     setLine(line + 1);
   }
 

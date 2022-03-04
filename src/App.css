@@ -2,13 +2,25 @@
   text-align: center;
   background-color: #000000;
   color: azure;
-  border-color: azure;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin: auto;
 }
 
 header {
-  font-size: xx-large;
-  padding: 50px;
+  padding: 30px;
+  font-family: "Permanent Marker", cursive;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 100%;
+  letter-spacing: 0.01em;
+  text-align: center;
+  left: 0;
+  right: 0;
+  pointer-events: none;
 }
 
 .wgrid {
@@ -17,6 +29,7 @@ header {
   align-items: center;
   align-content: center;
   margin: auto;
+  padding-bottom: 20px;
 }
 
 .wline {
@@ -28,20 +41,47 @@ header {
 
 .wcell {
   padding: 20px;
-  margin: 5px;
+  margin: 3px;
   width: 20px;
   height: 25px;
   border: solid;
-  border-width: 1px;
+  border-color: #3a3a3c;
+  border-width: 2px;
   font-size: x-large;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  vertical-align: middle;
+  text-transform: uppercase;
 }
 
 .right {
-  background-color: green;
-  color: #000000;
+  background-color: #538d4e;
+  border-color: #538d4e;
 }
 
 .hint {
-  background-color: yellow;
-  color: #000000;
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.wrong {
+  background-color: #3a3a3c;
+}
+
+.hg-theme-default.myTheme {
+  max-width: 850px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background: #000000;
+  color: white;
+  text-transform: uppercase;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.myBlack {
+  background: #818384;
+  color: white;
+  font-weight: bold;
 }

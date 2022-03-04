@@ -1,23 +1,51 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Dict from "./dict";
+import React, { useState, useEffect, useRef } from "react";
+import Targets from "./targets";
 import WGrid from "./WGrid";
+// https://hodgef.com/simple-keyboard/editor/?d=simple-keyboard/react-simple-keyboard-hooks-demo/tree/master
+import Keyboard from "react-simple-keyboard";
+import "react-simple-keyboard/build/css/index.css";
+import "./App.css";
 
 function App() {
   const [keyp, setKey] = useState();
   const [word, setWord] = useState();
+  const keyboard = useRef();
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       setKey(e);
     });
-    setWord(Dict[Math.floor(Math.random() * Dict.length)]);
+    const theword = Targets[Math.floor(Math.random() * Targets.length)];
+    setWord(theword);
+    console.log(theword);
   }, []);
 
   return (
     <div className="App">
-      <header>WORDLE!</header>
+      <header>JOSH'S WORDLE!</header>
       <WGrid word={word} keyp={keyp}></WGrid>
+
+      <Keyboard
+        keyboardRef={(r) => (keyboard.current = r)}
+        layoutName="default"
+        theme={"hg-theme-default myTheme"}
+        layout={{
+          default: [
+            "q w e r t y u i o p",
+            "a s d f g h j k l",
+            "{enter} z x c v b n m {bksp}",
+          ],
+        }}
+        buttonTheme={[
+          {
+            class: "myBlack",
+            buttons:
+              "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
+          },
+        ]}
+        // onChange={onChange}
+        // onKeyPress={onKeyPress}
+      />
     </div>
   );
 }

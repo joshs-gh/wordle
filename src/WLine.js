@@ -26,7 +26,6 @@ export default function WLine({ keyp, active, word, nextLine }) {
     const g = guess.join("").toLowerCase();
     const ga = g.split("");
     const wa = word.split("");
-    console.log(g, word);
     if (!Dict.includes(g)) {
       alert("Word not in dictionary");
       return;
@@ -54,16 +53,17 @@ export default function WLine({ keyp, active, word, nextLine }) {
           sc5(cn);
       }
     }
+    if (rc === 5) alert("You won!");
     nextLine();
   }
 
   return (
     <div className="wline">
-      <div className={`wcell ${c1}`}>{guess[0] || ""}</div>
-      <div className={`wcell ${c2}`}> {guess[1] || ""}</div>
-      <div className={`wcell ${c3}`}> {guess[2] || ""}</div>
-      <div className={`wcell ${c4}`}> {guess[3] || ""}</div>
-      <div className={`wcell ${c5}`}> {guess[4] || ""}</div>
+      <div className={`wcell ${c1}`}>{guess[0] || " "}</div>
+      <div className={`wcell ${c2}`}> {guess[1] || " "}</div>
+      <div className={`wcell ${c3}`}> {guess[2] || " "}</div>
+      <div className={`wcell ${c4}`}> {guess[3] || " "}</div>
+      <div className={`wcell ${c5}`}> {guess[4] || " "}</div>
     </div>
   );
 }
