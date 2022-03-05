@@ -80,7 +80,6 @@ export default function WLine({
           sc5(cn);
       }
     }
-    nextLine();
     if (rc === 5) {
       Store.addNotification({
         title: "You Won!",
@@ -91,7 +90,9 @@ export default function WLine({
         animationIn: ["animate__animated", "animate__fadeIn"],
       });
       keyHandler();
+      return;
     }
+    nextLine();
   }
 
   return (

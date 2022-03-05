@@ -3,7 +3,13 @@ import WLine from "./WLine";
 import { Store } from "react-notifications-component";
 import "./App.css";
 
-export default function WGrid({ theword, keyp, keyboard, keyHandler }) {
+export default function WGrid({
+  theword,
+  keyp,
+  keyboard,
+  keyHandler,
+  gameOver,
+}) {
   const [word, setWord] = useState();
   const [line, setLine] = useState();
 
@@ -13,10 +19,10 @@ export default function WGrid({ theword, keyp, keyboard, keyHandler }) {
   }, [theword]);
 
   function nextLine() {
-    line + 1 === 7
+    line + 1 === 7 && !gameOver
       ? Store.addNotification({
           title: "The word was: " + theword.toUpperCase(),
-          message: "Sorry, you lost : (    Reload to play again.",
+          message: "Reload to play again.",
           type: "danger",
           insert: "top",
           container: "top-center",

@@ -29,7 +29,7 @@ function App() {
     setKey(e);
   }
 
-  function keyHandler() {
+  function setGO() {
     // TODO: I CAN NOT GET THE DAMN KEYDOWN EVENT TO REMOVE - ERG!!!
     setGameOver(true);
   }
@@ -51,7 +51,8 @@ function App() {
         theword={word}
         keyp={!gameOver ? keyp : null}
         keyboard={keyboard.current}
-        keyHandler={keyHandler}
+        keyHandler={setGO}
+        gameOver={gameOver}
       ></WGrid>
 
       <Keyboard
