@@ -12,11 +12,11 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
 
   useEffect(() => {
     if (active && keyp) {
-      keyp.keyCode === 8
+      keyp.keyCode === 8 || keyp.key === "{bksp}"
         ? setGuess([...guess.slice(0, -1)])
         : /[a-zA-Z]/.test(String.fromCharCode(keyp.keyCode)) && guess.length < 5
         ? setGuess([...guess, keyp.key.toUpperCase()])
-        : keyp.keyCode === 13 && guess.length === 5
+        : (keyp.keyCode === 13 || keyp.key === "{enter}") && guess.length === 5
         ? checkGuess()
         : console.log("pass");
     }

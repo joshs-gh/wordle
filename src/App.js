@@ -12,7 +12,8 @@ function App() {
   const keyboard = useRef();
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) => {
+    window.addEventListener("keydown", (e) => {
+      console.log("GOT KEY", e);
       setKey(e);
     });
     const theword = Targets[Math.floor(Math.random() * Targets.length)];
@@ -24,6 +25,16 @@ function App() {
     );
   }, []);
 
+  function onKeyPress(button) {
+    console.log("BUTTON", button);
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: button,
+        keyCode: button.charCodeAt(0),
+      })
+    );
+  }
+
   return (
     <div className="App">
       <header>JOSH'S WORDLE!</header>
@@ -33,6 +44,10 @@ function App() {
         keyboardRef={(r) => (keyboard.current = r)}
         layoutName="default"
         theme={"hg-theme-default myTheme"}
+        display={{
+          "{bksp}": "<<",
+          "{enter}": "enter",
+        }}
         layout={{
           default: [
             "q w e r t y u i o p",
@@ -40,15 +55,7 @@ function App() {
             "{enter} z x c v b n m {bksp}",
           ],
         }}
-        // buttonTheme={[
-        //   {
-        //     class: "myGrey",
-        //     buttons:
-        //       "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
-        //   },
-        // ]}
-        // onChange={onChange}
-        // onKeyPress={onKeyPress}
+        onKeyPress={onKeyPress}
       />
     </div>
   );
