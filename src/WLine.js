@@ -36,7 +36,7 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
       if (ga[i] == wa[i]) {
         cn = "right";
         rc++;
-        keyboard.removeButtonTheme(ga[i], "myGrey");
+        keyboard.removeButtonTheme(ga[i], "myGrey buttonhint");
         keyboard.addButtonTheme(ga[i], "buttonright");
       } else if (wa.includes(ga[i])) {
         cn = "hint";
