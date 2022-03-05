@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Store } from "react-notifications-component";
 import "./App.css";
 import Dict from "./dict";
 
@@ -27,7 +28,18 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
     const ga = g.split("");
     const wa = word.split("");
     if (!Dict.includes(g)) {
-      alert("Word not in dictionary");
+      Store.addNotification({
+        message: "Word not recognized.",
+        type: "warning",
+        insert: "top",
+        container: "top-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 1500,
+          onScreen: true,
+        },
+      });
       return;
     }
     let cn = "";
@@ -61,8 +73,16 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
           sc5(cn);
       }
     }
-    if (rc === 5) alert("You won!");
     nextLine();
+    if (rc === 5)
+      Store.addNotification({
+        title: "You Won!",
+        message: "Reload to play again",
+        type: "success",
+        insert: "top",
+        container: "top-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+      });
   }
 
   return (

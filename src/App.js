@@ -3,6 +3,8 @@ import Targets from "./targets";
 import WGrid from "./WGrid";
 // https://hodgef.com/simple-keyboard/editor/?d=simple-keyboard/react-simple-keyboard-hooks-demo/tree/master
 import Keyboard from "react-simple-keyboard";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import "react-simple-keyboard/build/css/index.css";
 import "./App.css";
 
@@ -13,7 +15,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
-      console.log("GOT KEY", e);
       setKey(e);
     });
     const theword = Targets[Math.floor(Math.random() * Targets.length)];
@@ -26,7 +27,6 @@ function App() {
   }, []);
 
   function onKeyPress(button) {
-    console.log("BUTTON", button);
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
         key: button,
@@ -37,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <ReactNotifications />
       <header>JOSH'S WORDLE!</header>
       <WGrid theword={word} keyp={keyp} keyboard={keyboard.current}></WGrid>
 

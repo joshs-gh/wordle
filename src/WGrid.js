@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WLine from "./WLine";
+import { Store } from "react-notifications-component";
 import "./App.css";
 
 export default function WGrid({ theword, keyp, keyboard }) {
@@ -12,7 +13,16 @@ export default function WGrid({ theword, keyp, keyboard }) {
   }, [theword]);
 
   function nextLine() {
-    setLine(line + 1);
+    line + 1 === 7
+      ? Store.addNotification({
+          title: "The word was: " + theword.toUpperCase(),
+          message: "Sorry, you lost : (    Reload to play again.",
+          type: "danger",
+          insert: "top",
+          container: "top-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+        })
+      : setLine(line + 1);
   }
 
   return (
