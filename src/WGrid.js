@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import WLine from "./WLine";
 import "./App.css";
 
-export default function WGrid(props) {
+export default function WGrid({ theword, keyp, keyboard }) {
   const [word, setWord] = useState();
   const [line, setLine] = useState();
 
   useEffect(() => {
-    setWord(props.word);
+    setWord(theword);
     setLine(1);
-  }, [props.word]);
+  }, [theword]);
 
   function nextLine() {
     setLine(line + 1);
@@ -19,39 +19,45 @@ export default function WGrid(props) {
     <div className="wgrid">
       <WLine
         word={word}
-        keyp={props.keyp}
+        keyp={keyp}
         active={line === 1}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
       <WLine
         word={word}
-        keyp={line === 2 && props.keyp}
+        keyp={line === 2 && keyp}
         active={line === 2}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
       <WLine
         word={word}
-        keyp={line === 3 && props.keyp}
+        keyp={line === 3 && keyp}
         active={line === 3}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
       <WLine
         word={word}
-        keyp={line === 4 && props.keyp}
+        keyp={line === 4 && keyp}
         active={line === 4}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
       <WLine
         word={word}
-        keyp={line === 5 && props.keyp}
+        keyp={line === 5 && keyp}
         active={line === 5}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
       <WLine
         word={word}
-        keyp={line === 6 && props.keyp}
+        keyp={line === 6 && keyp}
         active={line === 6}
         nextLine={nextLine}
+        keyboard={keyboard}
       ></WLine>
     </div>
   );

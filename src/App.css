@@ -78,10 +78,29 @@ header {
   background: #000000;
   color: white;
   text-transform: uppercase;
+  padding-bottom: 150px;
 }
 
-.simple-keyboard.hg-layout-default .hg-button.myBlack {
+.simple-keyboard.hg-layout-default .hg-button.myGrey {
   background: #818384;
   color: white;
+  font-weight: bold;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.buttonright {
+  background: #538d4e;
+  border-color: #538d4e;
+  font-weight: bold;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.buttonhint {
+  background: #b59f3b;
+  border-color: #b59f3b;
+  font-weight: bold;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.buttonwrong {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
   font-weight: bold;
 }

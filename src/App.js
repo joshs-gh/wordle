@@ -18,12 +18,16 @@ function App() {
     const theword = Targets[Math.floor(Math.random() * Targets.length)];
     setWord(theword);
     console.log(theword);
+    keyboard.current.addButtonTheme(
+      "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
+      "myGrey"
+    );
   }, []);
 
   return (
     <div className="App">
       <header>JOSH'S WORDLE!</header>
-      <WGrid word={word} keyp={keyp}></WGrid>
+      <WGrid theword={word} keyp={keyp} keyboard={keyboard.current}></WGrid>
 
       <Keyboard
         keyboardRef={(r) => (keyboard.current = r)}
@@ -36,13 +40,13 @@ function App() {
             "{enter} z x c v b n m {bksp}",
           ],
         }}
-        buttonTheme={[
-          {
-            class: "myBlack",
-            buttons:
-              "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
-          },
-        ]}
+        // buttonTheme={[
+        //   {
+        //     class: "myGrey",
+        //     buttons:
+        //       "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
+        //   },
+        // ]}
         // onChange={onChange}
         // onKeyPress={onKeyPress}
       />

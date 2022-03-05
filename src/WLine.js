@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Dict from "./dict";
 
-export default function WLine({ keyp, active, word, nextLine }) {
+export default function WLine({ keyp, active, word, nextLine, keyboard }) {
   const [guess, setGuess] = useState([]);
   const [c1, sc1] = useState("");
   const [c2, sc2] = useState("");
@@ -36,9 +36,17 @@ export default function WLine({ keyp, active, word, nextLine }) {
       if (ga[i] == wa[i]) {
         cn = "right";
         rc++;
+        keyboard.removeButtonTheme(ga[i], "myGrey");
+        keyboard.addButtonTheme(ga[i], "buttonright");
       } else if (wa.includes(ga[i])) {
         cn = "hint";
-      } else cn = "wrong";
+        keyboard.removeButtonTheme(ga[i], "myGrey");
+        keyboard.addButtonTheme(ga[i], "buttonhint");
+      } else {
+        cn = "wrong";
+        keyboard.removeButtonTheme(ga[i], "myGrey");
+        keyboard.addButtonTheme(ga[i], "buttonwrong");
+      }
 
       switch (i) {
         case 0:
