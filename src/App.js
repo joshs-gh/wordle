@@ -11,12 +11,11 @@ import "./App.css";
 function App() {
   const [keyp, setKey] = useState();
   const [word, setWord] = useState();
+  const [gameOver, setGameOver] = useState(false);
   const keyboard = useRef();
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      setKey(e);
-    });
+    window.addEventListener("keydown", keyEventHandler, false);
     const theword = Targets[Math.floor(Math.random() * Targets.length)];
     setWord(theword);
     console.log(theword);
@@ -26,20 +25,34 @@ function App() {
     );
   }, []);
 
-  function onKeyPress(button) {
+  function keyEventHandler(e) {
+    setKey(e);
+  }
+
+  function keyHandler() {
+    // TODO: I CAN NOT GET THE DAMN KEYDOWN EVENT TO REMOVE - ERG!!!
+    setGameOver(true);
+  }
+
+  const onKeyPress = (button) => {
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
         key: button,
         keyCode: button.charCodeAt(0),
       })
     );
-  }
+  };
 
   return (
     <div className="App">
       <ReactNotifications />
       <header>JOSH'S WORDLE!</header>
-      <WGrid theword={word} keyp={keyp} keyboard={keyboard.current}></WGrid>
+      <WGrid
+        theword={word}
+        keyp={!gameOver ? keyp : null}
+        keyboard={keyboard.current}
+        keyHandler={keyHandler}
+      ></WGrid>
 
       <Keyboard
         keyboardRef={(r) => (keyboard.current = r)}

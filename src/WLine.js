@@ -3,7 +3,14 @@ import { Store } from "react-notifications-component";
 import "./App.css";
 import Dict from "./dict";
 
-export default function WLine({ keyp, active, word, nextLine, keyboard }) {
+export default function WLine({
+  keyp,
+  active,
+  word,
+  nextLine,
+  keyboard,
+  keyHandler,
+}) {
   const [guess, setGuess] = useState([]);
   const [c1, sc1] = useState("");
   const [c2, sc2] = useState("");
@@ -74,7 +81,7 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
       }
     }
     nextLine();
-    if (rc === 5)
+    if (rc === 5) {
       Store.addNotification({
         title: "You Won!",
         message: "Reload to play again",
@@ -83,6 +90,8 @@ export default function WLine({ keyp, active, word, nextLine, keyboard }) {
         container: "top-center",
         animationIn: ["animate__animated", "animate__fadeIn"],
       });
+      keyHandler();
+    }
   }
 
   return (

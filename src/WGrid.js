@@ -3,7 +3,7 @@ import WLine from "./WLine";
 import { Store } from "react-notifications-component";
 import "./App.css";
 
-export default function WGrid({ theword, keyp, keyboard }) {
+export default function WGrid({ theword, keyp, keyboard, keyHandler }) {
   const [word, setWord] = useState();
   const [line, setLine] = useState();
 
@@ -33,6 +33,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 1}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
       <WLine
         word={word}
@@ -40,6 +41,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 2}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
       <WLine
         word={word}
@@ -47,6 +49,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 3}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
       <WLine
         word={word}
@@ -54,6 +57,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 4}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
       <WLine
         word={word}
@@ -61,6 +65,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 5}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
       <WLine
         word={word}
@@ -68,6 +73,7 @@ export default function WGrid({ theword, keyp, keyboard }) {
         active={line === 6}
         nextLine={nextLine}
         keyboard={keyboard}
+        keyHandler={keyHandler}
       ></WLine>
     </div>
   );
