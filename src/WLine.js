@@ -12,12 +12,13 @@ export default function WLine({
   keyHandler,
 }) {
   const [guess, setGuess] = useState([]);
-  const [c1, sc1] = useState("");
-  const [c2, sc2] = useState("");
-  const [c3, sc3] = useState("");
-  const [c4, sc4] = useState("");
-  const [c5, sc5] = useState("");
+  // refs used to add classes dynamically
   const lineRef = useRef();
+  const cr1 = useRef();
+  const cr2 = useRef();
+  const cr3 = useRef();
+  const cr4 = useRef();
+  const cr5 = useRef();
 
   useEffect(() => {
     if (active && keyp) {
@@ -72,24 +73,59 @@ export default function WLine({
 
       switch (i) {
         case 0:
-          sc1(cellState);
+          let tmpState = cellState;
+          cr1.current.className = `wcell ${tmpState} flip`;
+          setTimeout(() => (cr1.current.className = `wcell ${tmpState}`), 1500);
           break;
         case 1:
-          sc2(cellState);
+          let tmpState1 = cellState;
+          setTimeout(
+            () => (cr2.current.className = `wcell ${tmpState1} flip`),
+            500
+          );
+          setTimeout(
+            () => (cr2.current.className = `wcell ${tmpState1}`),
+            1000
+          );
           break;
         case 2:
-          sc3(cellState);
+          let tmpState2 = cellState;
+          setTimeout(
+            () => (cr3.current.className = `wcell ${tmpState2} flip`),
+            1000
+          );
+          setTimeout(
+            () => (cr3.current.className = `wcell ${tmpState2}`),
+            1500
+          );
           break;
         case 3:
-          sc4(cellState);
+          let tmpState3 = cellState;
+          setTimeout(
+            () => (cr4.current.className = `wcell ${tmpState3} flip`),
+            1500
+          );
+          setTimeout(
+            () => (cr4.current.className = `wcell ${tmpState3}`),
+            2000
+          );
           break;
         case 4:
-          sc5(cellState);
+          let tmpState4 = cellState;
+          setTimeout(
+            () => (cr5.current.className = `wcell ${tmpState4} flip`),
+            2000
+          );
+          setTimeout(
+            () => (cr5.current.className = `wcell ${tmpState4}`),
+            2500
+          );
           break;
         default:
           break;
       }
     }
+
     if (rightCount === 5) {
       Store.addNotification({
         title: "You Won!",
@@ -100,30 +136,26 @@ export default function WLine({
         animationIn: ["animate__animated", "animate__fadeIn"],
       });
       keyHandler();
-      return;
+      return; // This fixed the you won, you lost bug
     }
     nextLine();
   }
 
   return (
     <div className="wline" ref={lineRef}>
-      <div className={guess[0] ? `wcell filled ${c1}` : `wcell ${c1}`}>
+      <div className={guess[0] ? `wcell filled` : `wcell`} ref={cr1}>
         {guess[0] || " "}
       </div>
-      <div className={guess[1] ? `wcell filled ${c2}` : `wcell ${c2}`}>
-        {" "}
+      <div className={guess[1] ? `wcell filled` : `wcell`} ref={cr2}>
         {guess[1] || " "}
       </div>
-      <div className={guess[2] ? `wcell filled ${c3}` : `wcell ${c3}`}>
-        {" "}
+      <div className={guess[2] ? `wcell filled` : `wcell`} ref={cr3}>
         {guess[2] || " "}
       </div>
-      <div className={guess[3] ? `wcell filled ${c4}` : `wcell ${c4}`}>
-        {" "}
+      <div className={guess[3] ? `wcell filled` : `wcell`} ref={cr4}>
         {guess[3] || " "}
       </div>
-      <div className={guess[4] ? `wcell filled ${c5}` : `wcell ${c5}`}>
-        {" "}
+      <div className={guess[4] ? `wcell filled` : `wcell`} ref={cr5}>
         {guess[4] || " "}
       </div>
     </div>

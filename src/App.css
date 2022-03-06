@@ -108,6 +108,19 @@ header {
   background-color: #3a3a3c;
 }
 
+.flip {
+  animation: flip 0.7s;
+}
+
+@keyframes flip {
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
 .hg-theme-default.myTheme {
   max-width: 850px;
   background-color: rgba(0, 0, 0, 0.8);
