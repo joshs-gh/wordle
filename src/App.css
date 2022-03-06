@@ -82,12 +82,12 @@ header {
 
 .filled {
   border-color: #565758;
-  animation: pop 0.2s;
+  animation: pop 0.15s;
 }
 
 @keyframes pop {
   50% {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
