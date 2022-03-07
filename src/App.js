@@ -7,12 +7,14 @@ import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import "react-simple-keyboard/build/css/index.css";
 import "./App.css";
+import reloadpng from "./reload.png";
 
 function App() {
   const [keyp, setKey] = useState();
   const [word, setWord] = useState();
   const [gameOver, setGameOver] = useState(false);
   const keyboard = useRef();
+  const reloadimg = useRef();
 
   useEffect(() => {
     window.addEventListener("keydown", keyEventHandler, false);
@@ -32,6 +34,7 @@ function App() {
   function setGO() {
     // TODO: I CAN NOT GET THE DAMN KEYDOWN EVENT TO REMOVE - ERG!!!
     setGameOver(true);
+    setTimeout(() => (reloadimg.current.style.visibility = "visible"), 2600);
   }
 
   const onKeyPress = (button) => {
@@ -47,12 +50,19 @@ function App() {
     <div className="App">
       <ReactNotifications />
       <header>JOSH'S WORDLE!</header>
+      <img
+        className="reloaderpng"
+        src={reloadpng}
+        onClick={() => window.location.reload()}
+        ref={reloadimg}
+      ></img>
       <WGrid
         theword={word}
         keyp={!gameOver ? keyp : null}
         keyboard={keyboard.current}
         keyHandler={setGO}
         gameOver={gameOver}
+        reloadimg={reloadimg}
       ></WGrid>
 
       <Keyboard

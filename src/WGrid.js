@@ -9,6 +9,7 @@ export default function WGrid({
   keyboard,
   keyHandler,
   gameOver,
+  reloadimg,
 }) {
   const [word, setWord] = useState();
   const [line, setLine] = useState();
@@ -19,16 +20,19 @@ export default function WGrid({
   }, [theword]);
 
   function nextLine() {
-    line + 1 === 7 && !gameOver
-      ? Store.addNotification({
+    if (line + 1 === 7 && !gameOver) {
+      setTimeout(() => {
+        Store.addNotification({
           title: "The word was: " + theword.toUpperCase(),
           message: "Reload to play again.",
           type: "danger",
           insert: "top",
           container: "top-center",
           animationIn: ["animate__animated", "animate__fadeIn"],
-        })
-      : setLine(line + 1);
+        });
+        reloadimg.current.style.visibility = "visible";
+      }, 2600);
+    } else setLine(line + 1);
   }
 
   return (
