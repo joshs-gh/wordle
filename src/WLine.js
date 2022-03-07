@@ -136,6 +136,7 @@ export default function WLine({
             insert: "top",
             container: "top-center",
             animationIn: ["animate__animated", "animate__fadeIn"],
+            onRemoval: (id, removedBy) => window.location.reload(),
           }),
         2500
       );

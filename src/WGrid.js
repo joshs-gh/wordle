@@ -29,6 +29,7 @@ export default function WGrid({
           insert: "top",
           container: "top-center",
           animationIn: ["animate__animated", "animate__fadeIn"],
+          onRemoval: (id, removedBy) => window.location.reload(),
         });
         reloadimg.current.style.visibility = "visible";
       }, 2600);
