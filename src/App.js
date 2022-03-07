@@ -49,13 +49,15 @@ function App() {
   return (
     <div className="App">
       <ReactNotifications />
-      <header>JOSH'S WORDLE!</header>
-      <img
-        className="reloaderpng"
-        src={reloadpng}
-        onClick={() => window.location.reload()}
-        ref={reloadimg}
-      ></img>
+      <div className="headdiv">
+        <header>JOSH'S WORDLE! </header>
+        <img
+          className="reloaderpng"
+          src={reloadpng}
+          onClick={() => window.location.reload()}
+          ref={reloadimg}
+        ></img>
+      </div>
       <WGrid
         theword={word}
         keyp={!gameOver ? keyp : null}

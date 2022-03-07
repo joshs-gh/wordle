@@ -10,6 +10,10 @@
   margin: auto;
 }
 
+.headdiv {
+  position: relative;
+}
+
 header {
   padding: 30px;
   font-family: "Permanent Marker", cursive;
@@ -27,9 +31,9 @@ header {
   position: absolute;
   width: 30px;
   height: 30px;
-  left: 55%;
-  top: 6%;
-  z-index: 10000;
+  left: 75%;
+  top: 40%;
+  z-index: 20000;
   background-color: transparent;
   border: none;
   filter: brightness(0) invert(1);
