@@ -121,6 +121,19 @@ header {
   }
 }
 
+.hop {
+  animation: hop 0.2s;
+}
+
+@keyframes hop {
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .hg-theme-default.myTheme {
   max-width: 850px;
   background-color: rgba(0, 0, 0, 0.8);

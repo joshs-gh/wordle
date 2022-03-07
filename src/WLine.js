@@ -127,18 +127,34 @@ export default function WLine({
     }
 
     if (rightCount === 5) {
-      Store.addNotification({
-        title: "You Won!",
-        message: "Reload to play again",
-        type: "success",
-        insert: "top",
-        container: "top-center",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-      });
-      keyHandler();
+      setTimeout(
+        () =>
+          Store.addNotification({
+            title: "You Won!",
+            message: "Reload to play again",
+            type: "success",
+            insert: "top",
+            container: "top-center",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+          }),
+        2500
+      );
+
+      // https://www.geeksforgeeks.org/how-to-use-dynamic-variable-names-in-javascript/
+      for (let i = 1; i < 6; i++) {
+        eval(
+          "setTimeout(() => {cr" +
+            i +
+            '.current.className += " hop"}, ' +
+            (2350 + i * 150) +
+            ");"
+        );
+      }
+
+      keyHandler(); // this actually sets game Over now.  Bleh - needs refactoring.
       return; // This fixed the you won, you lost bug
     }
-    nextLine();
+    nextLine(); // You lost is in here
   }
 
   return (
