@@ -6,6 +6,7 @@ import Dict from "./dict";
 export default function WLine({
   keyp,
   active,
+  lineNum,
   word,
   nextLine,
   keyboard,
@@ -152,7 +153,17 @@ export default function WLine({
         );
       }
 
-      keyHandler(); // this actually sets game Over now.  Bleh - needs refactoring.
+      // record to local storage
+      window.localStorage.setItem(
+        "jwwins",
+        parseInt(window.localStorage.getItem("jwwins") || 0) + 1
+      );
+      window.localStorage.setItem(
+        `jwg${lineNum}`,
+        parseInt(window.localStorage.getItem(`jwg${lineNum}`) || 0) + 1
+      );
+
+      keyHandler(true); // this actually sets game Over now.  Bleh - needs refactoring.
       return; // This fixed the you won, you lost bug
     }
     nextLine(); // You lost is in here

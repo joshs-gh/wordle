@@ -8,6 +8,7 @@ import "react-notifications-component/dist/theme.css";
 import "react-simple-keyboard/build/css/index.css";
 import "./App.css";
 import reloadpng from "./reload.png";
+import Score from "./Score";
 
 function App() {
   const [keyp, setKey] = useState();
@@ -31,9 +32,9 @@ function App() {
     setKey(e);
   }
 
-  function setGO() {
+  function setGO(won) {
     // TODO: I CAN NOT GET THE DAMN KEYDOWN EVENT TO REMOVE - ERG!!!
-    setGameOver(true);
+    setTimeout(() => setGameOver(true), won ? 3200 : 500);
     setTimeout(() => (reloadimg.current.style.visibility = "visible"), 2600);
   }
 
@@ -58,6 +59,10 @@ function App() {
           ref={reloadimg}
         ></img>
       </div>
+      <div style={{ position: "relative", width: "335px" }}>
+        {gameOver && <Score />}
+      </div>
+
       <WGrid
         theword={word}
         keyp={!gameOver ? keyp : null}

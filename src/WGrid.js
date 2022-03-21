@@ -32,6 +32,11 @@ export default function WGrid({
           onRemoval: (id, removedBy) => window.location.reload(),
         });
         reloadimg.current.style.visibility = "visible";
+        window.localStorage.setItem(
+          "jwlosses",
+          parseInt(window.localStorage.getItem("jwlosses") || 0) + 1
+        );
+        keyHandler(false);
       }, 2600);
     } else setLine(line + 1);
   }
@@ -42,6 +47,7 @@ export default function WGrid({
         word={word}
         keyp={keyp}
         active={line === 1}
+        lineNum={line}
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
@@ -50,6 +56,7 @@ export default function WGrid({
         word={word}
         keyp={line === 2 && keyp}
         active={line === 2}
+        lineNum={line}
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
@@ -57,6 +64,7 @@ export default function WGrid({
       <WLine
         word={word}
         keyp={line === 3 && keyp}
+        lineNum={line}
         active={line === 3}
         nextLine={nextLine}
         keyboard={keyboard}
@@ -66,6 +74,7 @@ export default function WGrid({
         word={word}
         keyp={line === 4 && keyp}
         active={line === 4}
+        lineNum={line}
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
@@ -74,6 +83,7 @@ export default function WGrid({
         word={word}
         keyp={line === 5 && keyp}
         active={line === 5}
+        lineNum={line}
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
@@ -82,6 +92,7 @@ export default function WGrid({
         word={word}
         keyp={line === 6 && keyp}
         active={line === 6}
+        lineNum={line}
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
