@@ -56,20 +56,24 @@ export default function WLine({
     }
     let cellState = "";
     let rightCount = 0;
+    let hints = []; // bug where hint shows twice on same letter
     for (let i = 0; i < 5; i++) {
       if (ga[i] === wa[i]) {
         cellState = "right";
         rightCount++;
         keyboard.removeButtonTheme(ga[i], "myGrey buttonhint");
         keyboard.addButtonTheme(ga[i], "buttonright");
-      } else if (wa.includes(ga[i])) {
+      } else if (wa.includes(ga[i]) && !hints.includes(ga[i])) {
         cellState = "hint";
         keyboard.removeButtonTheme(ga[i], "myGrey");
-        keyboard.addButtonTheme(ga[i], "buttonhint");
+        !keyboard.getButtonElement(ga[i]).className.match(/buttonright/g) && // don't turn keyboard back to yellow if green
+          keyboard.addButtonTheme(ga[i], "buttonhint");
+        hints.push(ga[i]);
       } else {
         cellState = "wrong";
         keyboard.removeButtonTheme(ga[i], "myGrey");
-        keyboard.addButtonTheme(ga[i], "buttonwrong");
+        !keyboard.getButtonElement(ga[i]).className.match(/buttonright/g) &&
+          keyboard.addButtonTheme(ga[i], "buttonwrong");
       }
 
       switch (i) {
