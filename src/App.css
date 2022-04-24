@@ -80,15 +80,19 @@ h2 {
   20% {
     transform: translateX(-2%);
   }
+
   40% {
     transform: translateX(5%);
   }
+
   60% {
     transform: translateX(-5%);
   }
+
   80% {
     transform: translateX(2%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -122,6 +126,7 @@ h2 {
   50% {
     transform: scale(1.2);
   }
+
   100% {
     transform: scale(1);
   }
@@ -149,6 +154,7 @@ h2 {
   50% {
     transform: rotateX(90deg);
   }
+
   100% {
     transform: rotateX(0deg);
   }
@@ -162,6 +168,7 @@ h2 {
   50% {
     transform: translateY(-20px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -217,9 +224,11 @@ h2 {
   0% {
     transform: translateX(200%);
   }
+
   90% {
     transform: translateX(-8%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -231,4 +240,20 @@ h2 {
   position: absolute;
   right: 15px;
   cursor: pointer;
+}
+
+/* https://github.com/animate-css/animate.css/issues/934 */
+@media (prefers-reduced-motion: reduce) {
+  .wcell {
+    /* Stop the animation */
+    animation: none;
+
+    /* Provide alternate styling */
+    background-color: #47ACFA;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 30vh;
+    width: 30vh;
+  }
 }
