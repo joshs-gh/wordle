@@ -152,10 +152,12 @@ h2 {
 
 @keyframes flip {
   50% {
+    -webkit-transform: rotateX(90deg);
     transform: rotateX(90deg);
   }
 
   100% {
+    -webkit-transform: rotateX(0deg);
     transform: rotateX(0deg);
   }
 }
