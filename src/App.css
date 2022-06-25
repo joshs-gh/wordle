@@ -182,9 +182,9 @@ h2 {
   font-weight: bold;
 }
 
-.simple-keyboard.hg-layout-default .hg-button.buttonright {
-  background: #538d4e;
-  border-color: #538d4e;
+.simple-keyboard.hg-layout-default .hg-button.buttonwrong {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
   font-weight: bold;
 }
 
@@ -194,9 +194,9 @@ h2 {
   font-weight: bold;
 }
 
-.simple-keyboard.hg-layout-default .hg-button.buttonwrong {
-  background: #3a3a3c;
-  border-color: #3a3a3c;
+.simple-keyboard.hg-layout-default .hg-button.buttonright {
+  background: #538d4e;
+  border-color: #538d4e;
   font-weight: bold;
 }
 
