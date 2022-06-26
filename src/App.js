@@ -9,15 +9,22 @@ import "react-simple-keyboard/build/css/index.css";
 import "./App.css";
 import reloadpng from "./reload.png";
 import Score from "./Score";
+import { useSearchParams } from "react-router-dom";
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function App() {
   const [keyp, setKey] = useState();
   const [word, setWord] = useState();
   const [gameOver, setGameOver] = useState(false);
+  const [newGame, setNewGame] = useState(true);
   const keyboard = useRef();
   const reloadimg = useRef();
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
+  useEffect(async () => {
     window.addEventListener("keydown", keyEventHandler, false);
     const theword = Targets[Math.floor(Math.random() * Targets.length)];
     setWord(theword);
@@ -26,6 +33,45 @@ function App() {
       "q w e r t y u i o p a s d f g h j k l {enter} z x c v b n m {bksp}",
       "myGrey"
     );
+    if (newGame && searchParams.get("autotype") === "adieu") {
+      await autopress("a");
+      await autopress("d");
+      await autopress("i");
+      await autopress("e");
+      await autopress("u");
+      await autopress("{enter}");
+      await sleep(1000);
+      await autopress("s");
+      await autopress("t");
+      await autopress("o");
+      await autopress("r");
+      await autopress("y");
+      await autopress("{enter}");
+      setNewGame(false);
+    }
+    if (newGame && searchParams.get("autotype") === "learn") {
+      await autopress("l");
+      await autopress("e");
+      await autopress("a");
+      await autopress("r");
+      await autopress("n");
+      await autopress("{enter}");
+      await sleep(1000);
+      await autopress("m");
+      await autopress("o");
+      await autopress("i");
+      await autopress("s");
+      await autopress("t");
+      await autopress("{enter}");
+      await sleep(1000);
+      await autopress("d");
+      await autopress("u");
+      await autopress("c");
+      await autopress("k");
+      await autopress("y");
+      await autopress("{enter}");
+      setNewGame(false);
+    }
   }, []);
 
   function keyEventHandler(e) {
@@ -38,6 +84,16 @@ function App() {
     setTimeout(() => (reloadimg.current.style.visibility = "visible"), 2600);
   }
 
+  const autopress = async (k) => {
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: k,
+        keyCode: k.charCodeAt(0),
+      })
+    );
+    await sleep(200);
+  };
+
   const onKeyPress = (button) => {
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
@@ -45,6 +101,7 @@ function App() {
         keyCode: button.charCodeAt(0),
       })
     );
+    setNewGame(false);
   };
 
   return (
