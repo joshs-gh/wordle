@@ -10,6 +10,7 @@ import "./App.css";
 import reloadpng from "./reload.png";
 import Score from "./Score";
 import { useSearchParams } from "react-router-dom";
+import Cheat from "./Cheat";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -19,6 +20,7 @@ function App() {
   const [keyp, setKey] = useState();
   const [word, setWord] = useState();
   const [gameOver, setGameOver] = useState(false);
+  const [cheat, setCheat] = useState(false);
   const [newGame, setNewGame] = useState(true);
   const keyboard = useRef();
   const reloadimg = useRef();
@@ -118,6 +120,7 @@ function App() {
       </div>
       <div style={{ position: "relative", width: "335px" }}>
         {gameOver && <Score />}
+        {cheat && <Cheat setCheat={setCheat} />}
       </div>
 
       <WGrid
@@ -146,6 +149,9 @@ function App() {
         }}
         onKeyPress={onKeyPress}
       />
+      <button className="cheat" onClick={() => setCheat((cheat) => !cheat)}>
+        Cheat
+      </button>
     </div>
   );
 }

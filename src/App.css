@@ -209,9 +209,12 @@ h2 {
   font-weight: bold;
 }
 
-.scorebox {
+.scorebox,
+.cheatbox {
   width: 300px;
   height: auto;
+  max-height: 500px;
+  overflow: scroll;
   background-color: #000000;
   padding: 1em;
   border-style: solid;
@@ -251,11 +254,28 @@ h2 {
     animation: none;
 
     /* Provide alternate styling */
-    background-color: #47ACFA;
+    background-color: #47acfa;
     border: none;
     border-radius: 0;
     box-shadow: none;
     height: 30vh;
     width: 30vh;
   }
+}
+
+.cheat {
+  background-color: #000000;
+  color: whitesmoke;
+  margin-bottom: 20px;
+}
+
+.cheatSearch {
+  margin-top: 20px;
+  background-color: #000000;
+  color: whitesmoke;
+  margin-right: 15px;
+}
+
+.cheatResults {
+  /* overflow: scroll; */
 }
