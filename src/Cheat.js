@@ -9,9 +9,10 @@ export default function Cheat({ setCheat }) {
   const [cheatResults, setCheatResults] = useState([]);
 
   const handleInput = (e) => {
+    e.stopPropagation();
     if (e.target.value === "") setCheatResults([]);
     if (e.key !== "Enter") return;
-    const search = e.target.value;
+    const search = e.target.value.toLowerCase();
     console.log(e);
     const re = new RegExp("^" + search.replaceAll("x", "."));
     setCheatResults(Dict.filter((word) => re.test(word)));
