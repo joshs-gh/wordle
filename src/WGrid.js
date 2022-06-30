@@ -10,6 +10,8 @@ export default function WGrid({
   keyHandler,
   gameOver,
   reloadimg,
+  setCheatLine,
+  setCheat,
 }) {
   const [word, setWord] = useState();
   const [line, setLine] = useState();
@@ -51,6 +53,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
       <WLine
         word={word}
@@ -60,6 +64,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
       <WLine
         word={word}
@@ -69,6 +75,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
       <WLine
         word={word}
@@ -78,6 +86,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
       <WLine
         word={word}
@@ -87,6 +97,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
       <WLine
         word={word}
@@ -96,6 +108,8 @@ export default function WGrid({
         nextLine={nextLine}
         keyboard={keyboard}
         keyHandler={keyHandler}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WLine>
     </div>
   );

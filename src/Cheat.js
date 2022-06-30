@@ -1,22 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import closeIcon from "./closeIcon.png";
 import Dict from "./dict";
 
-export default function Cheat({ setCheat }) {
+export default function Cheat({ setCheat, cheatLine }) {
   const cheatbox = useRef();
   const searchString = useRef();
   const [cheatResults, setCheatResults] = useState([]);
 
-  const handleInput = (e) => {
-    e.stopPropagation();
-    if (e.target.value === "") setCheatResults([]);
-    if (e.key !== "Enter") return;
-    const search = e.target.value.toLowerCase();
-    console.log(e);
+  useEffect(() => {
+    if (cheatLine === "") setCheatResults([]);
+    const search = cheatLine.toString().toLowerCase();
     const re = new RegExp("^" + search.replaceAll("x", "."));
     setCheatResults(Dict.filter((word) => re.test(word)));
-  };
+  }, [cheatLine]);
 
   return (
     <div className="cheatbox" ref={cheatbox}>
@@ -26,7 +23,7 @@ export default function Cheat({ setCheat }) {
         onClick={(e) => setCheat(false)}
       />
       <h2>CHEATER!</h2>
-      <input
+      {/* <input
         ref={searchString}
         placeholder={"Use x for wildcard"}
         className="cheatSearch"
@@ -40,13 +37,17 @@ export default function Cheat({ setCheat }) {
         }}
       >
         Clear
-      </button>
+      </button> */}
       <div className="cheatResults">
-        <ul>
-          {cheatResults.map((r) => (
-            <li>{r}</li>
-          ))}
-        </ul>
+        {cheatResults.length > 0 ? (
+          <ul>
+            {cheatResults.map((r) => (
+              <li>{r}</li>
+            ))}
+          </ul>
+        ) : (
+          <div className="nomatches"> No Matches : (</div>
+        )}
       </div>
     </div>
   );

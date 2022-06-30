@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Store } from "react-notifications-component";
 import "./App.css";
 import Dict from "./dict";
+import { useSwipeable } from "react-swipeable";
 
 export default function WLine({
   keyp,
@@ -11,6 +12,8 @@ export default function WLine({
   nextLine,
   keyboard,
   keyHandler,
+  setCheatLine,
+  setCheat,
 }) {
   const [guess, setGuess] = useState([]);
   // refs used to add classes dynamically
@@ -20,6 +23,12 @@ export default function WLine({
   const cr3 = useRef();
   const cr4 = useRef();
   const cr5 = useRef();
+  const handlers = useSwipeable({
+    onSwipedRight: (eventData) => {
+      setCheatLine(guess.join(""));
+      setCheat(true);
+    },
+  });
 
   useEffect(() => {
     if (active && keyp) {
@@ -174,7 +183,7 @@ export default function WLine({
   }
 
   return (
-    <div className="wline" ref={lineRef}>
+    <div className="wline" ref={lineRef} {...handlers}>
       <div className={guess[0] ? `wcell filled` : `wcell`} ref={cr1}>
         {guess[0] || " "}
       </div>

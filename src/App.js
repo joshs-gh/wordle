@@ -21,6 +21,7 @@ function App() {
   const [word, setWord] = useState();
   const [gameOver, setGameOver] = useState(false);
   const [cheat, setCheat] = useState(false);
+  const [cheatLine, setCheatLine] = useState("");
   const [newGame, setNewGame] = useState(true);
   const keyboard = useRef();
   const reloadimg = useRef();
@@ -120,7 +121,7 @@ function App() {
       </div>
       <div style={{ position: "relative", width: "335px" }}>
         {gameOver && <Score />}
-        {cheat && <Cheat setCheat={setCheat} />}
+        {cheat && <Cheat setCheat={setCheat} cheatLine={cheatLine} />}
       </div>
 
       <WGrid
@@ -130,6 +131,8 @@ function App() {
         keyHandler={setGO}
         gameOver={gameOver}
         reloadimg={reloadimg}
+        setCheat={setCheat}
+        setCheatLine={setCheatLine}
       ></WGrid>
 
       <Keyboard
@@ -149,9 +152,9 @@ function App() {
         }}
         onKeyPress={onKeyPress}
       />
-      <button className="cheat" onClick={() => setCheat((cheat) => !cheat)}>
+      {/* <button className="cheat" onClick={() => setCheat((cheat) => !cheat)}>
         Cheat
-      </button>
+      </button> */}
     </div>
   );
 }

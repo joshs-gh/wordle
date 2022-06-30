@@ -276,6 +276,6 @@ h2 {
   margin-right: 15px;
 }
 
-.cheatResults {
-  /* overflow: scroll; */
+.nomatches {
+  margin-top: 20px;
 }
