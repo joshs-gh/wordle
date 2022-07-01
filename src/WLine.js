@@ -182,8 +182,14 @@ export default function WLine({
     nextLine(); // You lost is in here
   }
 
+  // https://www.npmjs.com/package/react-swipeable#:~:text=How%20to%20share%20ref%20from%20useSwipeable%3F
+  const refPassthrough = (el) => {
+    handlers.ref(el);
+    lineRef.current = el;
+  };
+
   return (
-    <div className="wline" ref={lineRef} {...handlers}>
+    <div className="wline" {...handlers} ref={refPassthrough}>
       <div className={guess[0] ? `wcell filled` : `wcell`} ref={cr1}>
         {guess[0] || " "}
       </div>

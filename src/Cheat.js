@@ -41,8 +41,8 @@ export default function Cheat({ setCheat, cheatLine }) {
       <div className="cheatResults">
         {cheatResults.length > 0 ? (
           <ul>
-            {cheatResults.map((r) => (
-              <li>{r}</li>
+            {cheatResults.map((r, id) => (
+              <li key={id}>{r}</li>
             ))}
           </ul>
         ) : (
