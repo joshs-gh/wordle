@@ -2,17 +2,24 @@ import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import closeIcon from "./closeIcon.png";
 import Dict from "./dict";
+import { WStore } from "./WStore";
 
 export default function Cheat({ setCheat, cheatLine }) {
   const cheatbox = useRef();
   const searchString = useRef();
   const [cheatResults, setCheatResults] = useState([]);
+  const wrongGuesses = WStore.useState((s) => s.wrongGuesses);
 
   useEffect(() => {
     if (cheatLine === "") setCheatResults([]);
     const search = cheatLine.toString().toLowerCase();
     const re = new RegExp("^" + search.replaceAll("x", "."));
-    setCheatResults(Dict.filter((word) => re.test(word)));
+    setCheatResults(
+      Dict.filter(
+        (word) =>
+          re.test(word) && !wrongGuesses.some((letter) => word.includes(letter))
+      )
+    );
   }, [cheatLine]);
 
   return (

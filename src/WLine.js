@@ -3,6 +3,7 @@ import { Store } from "react-notifications-component";
 import "./App.css";
 import Dict from "./dict";
 import { useSwipeable } from "react-swipeable";
+import { WStore } from "./WStore";
 
 export default function WLine({
   keyp,
@@ -29,6 +30,7 @@ export default function WLine({
       setCheat(true);
     },
   });
+  const wrongGuesses = WStore.useState((s) => s.wrongGuesses);
 
   useEffect(() => {
     if (active && keyp) {
@@ -83,6 +85,7 @@ export default function WLine({
         keyboard.removeButtonTheme(ga[i], "myGrey");
         !keyboard.getButtonElement(ga[i]).className.match(/buttonright/g) &&
           keyboard.addButtonTheme(ga[i], "buttonwrong");
+        wrongGuesses.push(ga[i]);
       }
 
       switch (i) {
